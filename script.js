@@ -6,7 +6,7 @@ function convertToString(_sql) {
       const isLastIndex = index === array.length - 1;
 
       if (isLastIndex) {
-        return '"' + line + " " + '"';
+        return '"' + line + " " + '"' + ";";
       }
 
       return '"' + line + " " + "\\n" + '"' + "+" + "\n";
