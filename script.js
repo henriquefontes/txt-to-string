@@ -6,7 +6,7 @@ function convertToString(_sql) {
       const isLastIndex = index === array.length - 1;
 
       if (isLastIndex) {
-        return '"' + line + " " + '"' + ";";
+        return '"' + line + ';";';
       }
 
       return '"' + line + " " + "\\n" + '"' + "+" + "\n";
@@ -15,10 +15,10 @@ function convertToString(_sql) {
 
   return sql;
 }
-
-const sql = document.querySelector("textarea").value;
 const convertBtn = document.getElementById("convert");
 
 convertBtn.addEventListener("click", () => {
+  const sql = document.querySelector("textarea").value;
+
   navigator.clipboard.writeText(convertToString(sql));
 });
