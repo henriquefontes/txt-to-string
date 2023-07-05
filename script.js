@@ -1,3 +1,9 @@
+const sqlTextArea = document.getElementById("sql");
+const stringTextArea = document.getElementById("string");
+//
+const toStringBtn = document.getElementById("to-string");
+const toSqlBtn = document.getElementById("to-sql");
+
 function convertToString(_sql) {
   const splittedSql = _sql.split("\n");
 
@@ -15,10 +21,34 @@ function convertToString(_sql) {
 
   return sql;
 }
-const convertBtn = document.getElementById("convert");
 
-convertBtn.addEventListener("click", () => {
-  const sql = document.querySelector("textarea").value;
+function convertToSql(_string) {
+  return _string
+    .split("+")
+    .map((line) => line.replaceAll('"', ""))
+    .map((line) => {
+      if (line.substring(0, 1) === "\n") {
+        return line.replace("\n", "");
+      }
 
-  navigator.clipboard.writeText(convertToString(sql));
+      return line;
+    })
+    .map((line) => line.replace("\\n", "\n"))
+    .join("");
+}
+
+toSqlBtn.addEventListener("click", () => {
+  sqlTextArea.value = convertToSql(stringTextArea.value);
+});
+
+toStringBtn.addEventListener("click", () => {
+  stringTextArea.value = convertToString(sqlTextArea.value);
+});
+
+document.querySelectorAll("i").forEach((copyBtn) => {
+  const textArea = copyBtn.parentElement.parentElement.children[0];
+
+  copyBtn.addEventListener("click", () => {
+    navigator.clipboard.writeText(textArea.value);
+  });
 });

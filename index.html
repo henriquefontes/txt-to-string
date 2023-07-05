@@ -3,26 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
     <title>TXT to String</title>
   </head>
-  <body
-    style="
-      height: 100vh;
-      display: flex;
-      gap: 10px;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    "
-  >
-    <textarea
-      name=""
-      id=""
-      cols="30"
-      rows="10"
-      style="resize: none; width: 600px"
-    ></textarea>
-    <button id="convert">Convert</button>
+  <body>
+    <div class="textarea-container">
+      <textarea id="sql" cols="30" rows="10"></textarea>
+      <div class="topbar">
+        <span>SQL</span>
+        <i class="bx bx-copy"></i>
+      </div>
+    </div>
+    <div class="buttons">
+      <button id="to-string">To String &gt;</button>
+      <button id="to-sql">&lt; To SQL</button>
+    </div>
+    <div class="textarea-container">
+      <textarea id="string" cols="30" rows="10"></textarea>
+      <div class="topbar">
+        <span>String</span>
+        <i class="bx bx-copy"></i>
+      </div>
+    </div>
   </body>
   <script src="script.js"></script>
 </html>
