@@ -24,12 +24,13 @@ function convertToString(_sql) {
 
 function convertToSql(_string) {
   const splittedString = _string.split("+");
-  const lastLine = splittedString[splittedString - 1];
-  const lastLineChar = lastLine[lastLine - 1];
+  const lastLine = splittedString[splittedString.length - 1];
+  const lastLineChar = lastLine[lastLine.length - 1];
 
   if (lastLineChar === ";") {
-    splittedString[splittedString - 1][splittedString[splittedString - 1] - 1] =
-      "";
+    splittedString[splittedString.length - 1][
+      splittedString[splittedString.length - 1] - 1
+    ] = "";
   }
 
   return splittedString
