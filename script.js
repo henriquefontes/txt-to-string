@@ -23,8 +23,16 @@ function convertToString(_sql) {
 }
 
 function convertToSql(_string) {
-  return _string
-    .split("+")
+  const splittedString = _string.split("+");
+  const lastLine = splittedString[splittedString - 1];
+  const lastLineChar = lastLine[lastLine - 1];
+
+  if (lastLineChar === ";") {
+    splittedString[splittedString - 1][splittedString[splittedString - 1] - 1] =
+      "";
+  }
+
+  return splittedString
     .map((line) => line.replaceAll('"', ""))
     .map((line) => {
       if (line.substring(0, 1) === "\n") {
