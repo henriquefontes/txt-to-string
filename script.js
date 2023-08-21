@@ -10,12 +10,15 @@ function convertToString(_sql) {
   const sql = splittedSql
     .map((line, index, array) => {
       const isLastIndex = index === array.length - 1;
+      const isFirstIndex = index === 0;
 
       if (isLastIndex) {
         return '"' + line + '";';
       }
 
-      return '"' + line + " " + "\\n" + '"' + "+" + "\n";
+      return isFirstIndex 
+          ? '"' + line + " " + "\\n" + '"' + "+" + "\n"
+          : ' "' + line + " " + "\\n" + '"' + "+" + "\n";
     })
     .join("");
 
