@@ -21,16 +21,11 @@ function convertToString(_sql) {
 
   return sql;
 }
-
 function convertToSql(_string) {
   const splittedString = _string.split("+");
-  const lastLine = splittedString[splittedString.length - 1];
-  const lastLineChar = lastLine[lastLine.length - 1];
-
-  if (lastLineChar === ";") {
-    splittedString[splittedString.length - 1][
-      splittedString[splittedString.length - 1] - 1
-    ] = "";
+  const lastLine = splittedString[splittedString.length - 1].trim();
+  if (lastLine.charAt(lastLine.length - 1) === ";") {
+    splittedString[splittedString.length - 1] = lastLine.slice(0, -1);
   }
 
   return splittedString
